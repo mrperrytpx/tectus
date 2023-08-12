@@ -17,7 +17,11 @@ function createTectus() {
         activeTectide--;
         createTectus();
         createTectus();
-        if (tectusImages >= 200) body.removeChild(tectus);
+        if (body.clientWidth < 500) {
+            if (tectusImages >= 50) body.removeChild(tectus);
+        } else {
+            if (tectusImages >= 250) body.removeChild(tectus);
+        }
     });
 
     const delay = Math.random() * 3000;
@@ -26,8 +30,6 @@ function createTectus() {
 
         let topPosition = Math.floor(Math.random() * body.clientHeight - 150);
         let leftPosition = Math.floor(Math.random() * body.clientWidth - 150);
-
-        console.log(topPosition, leftPosition);
 
         tectus.style.top = topPosition + "px";
         tectus.style.left = leftPosition + "px";

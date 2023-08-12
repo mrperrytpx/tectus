@@ -54,7 +54,7 @@ a:hover {
 
 #tectus {
     position: absolute;
-    animation: swing 5000ms infinite ease-in-out;
+    animation: swing 5000ms ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion) {
