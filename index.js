@@ -4,8 +4,8 @@ let activeTectide = 0;
 let tectusImages = 0;
 
 function createTectus() {
-    tectusImages++;
     if (activeTectide >= 5) return;
+    console.log(tectusImages);
 
     const riseMountinsAudio = new Audio("public/rise-mountains.mp3");
 
@@ -18,9 +18,15 @@ function createTectus() {
         createTectus();
         createTectus();
         if (body.clientWidth < 500) {
-            if (tectusImages >= 50) body.removeChild(tectus);
+            if (tectusImages >= 50) {
+                body.removeChild(tectus);
+                tectusImages--;
+            }
         } else {
-            if (tectusImages >= 250) body.removeChild(tectus);
+            if (tectusImages >= 200) {
+                body.removeChild(tectus);
+                tectusImages--;
+            }
         }
     });
 
@@ -35,6 +41,7 @@ function createTectus() {
         tectus.style.left = leftPosition + "px";
         body.appendChild(tectus);
         activeTectide++;
+        tectusImages++;
     }, delay);
 }
 
