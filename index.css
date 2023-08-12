@@ -1,0 +1,73 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+html,
+body {
+    height: 100svh;
+    background-color: #111111;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #666666;
+    margin-top: 2rem;
+    user-select: none;
+    cursor: pointer;
+    transition: color 150ms;
+}
+
+h1:hover {
+    color: white;
+    transition: color 150ms;
+}
+
+a {
+    color: white;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    transition: scale 300ms;
+    z-index: 9999;
+}
+
+a:hover {
+    scale: 1.25 1.25;
+    transition: scale 300ms;
+}
+
+#tectus {
+    position: absolute;
+    animation: swing 5000ms infinite ease-in-out;
+}
+
+@keyframes swing {
+    0% {
+        transform: translateX(0%);
+    }
+    33% {
+        transform: translateX(-25%);
+    }
+    67% {
+        transform: translateX(25%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
