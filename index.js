@@ -5,7 +5,6 @@ let tectusImages = 0;
 
 function createTectus() {
     if (activeTectide >= 5) return;
-    console.log(tectusImages);
 
     const riseMountinsAudio = new Audio("public/rise-mountains.mp3");
 
