@@ -57,6 +57,12 @@ a:hover {
     animation: swing 5000ms infinite ease-in-out;
 }
 
+@media (prefers-reduced-motion) {
+    #tectus {
+        animation: none;
+    }
+}
+
 @keyframes swing {
     0% {
         transform: translateX(0%);
