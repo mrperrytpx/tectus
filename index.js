@@ -5,7 +5,7 @@ let tectusImages = 0;
 
 function createTectus() {
     if (activeTectide >= 5) return;
-
+    activeTectide++;
     const riseMountinsAudio = new Audio("public/rise-mountains.mp3");
 
     const tectus = document.createElement("img");
@@ -16,6 +16,7 @@ function createTectus() {
         activeTectide--;
         createTectus();
         createTectus();
+
         if (body.clientWidth < 500) {
             if (tectusImages >= 50) {
                 body.removeChild(tectus);
@@ -39,7 +40,6 @@ function createTectus() {
         tectus.style.top = topPosition + "px";
         tectus.style.left = leftPosition + "px";
         body.appendChild(tectus);
-        activeTectide++;
         tectusImages++;
     }, delay);
 }
