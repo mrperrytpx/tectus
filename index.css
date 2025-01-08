@@ -52,13 +52,13 @@ a:hover {
     transition: scale 300ms;
 }
 
-#tectus {
+.tectus {
     position: absolute;
     animation: swing 5000ms ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion) {
-    #tectus {
+    .tectus {
         animation: none;
     }
 }

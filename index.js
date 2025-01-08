@@ -1,5 +1,5 @@
 const body = document.getElementById("body");
-let didUserInteract = false;
+const area = document.querySelector(".area");
 let activeTectide = 0;
 let tectusImages = 0;
 
@@ -8,23 +8,20 @@ function createTectus() {
     activeTectide++;
     const riseMountinsAudio = new Audio("public/rise-mountains.mp3");
 
-    const tectus = document.createElement("img");
-    tectus.setAttribute("src", "public/tectus.webp");
-    tectus.setAttribute("id", "tectus");
-
     riseMountinsAudio.addEventListener("ended", () => {
         activeTectide--;
         createTectus();
         createTectus();
 
+        const firstTectus = area.firstChild;
         if (body.clientWidth < 500) {
             if (tectusImages >= 50) {
-                body.removeChild(tectus);
+                area.removeChild(firstTectus);
                 tectusImages--;
             }
         } else {
             if (tectusImages >= 200) {
-                body.removeChild(tectus);
+                area.removeChild(firstTectus);
                 tectusImages--;
             }
         }
@@ -34,17 +31,23 @@ function createTectus() {
     setTimeout(() => {
         riseMountinsAudio.play();
 
-        let topPosition = Math.floor(Math.random() * body.clientHeight - 150);
-        let leftPosition = Math.floor(Math.random() * body.clientWidth - 150);
+        const tectus = document.createElement("img");
+        tectus.setAttribute("src", "public/tectus.webp");
+        tectus.setAttribute("class", "tectus");
 
+        const topPosition = Math.floor(Math.random() * body.clientHeight - 150);
+        const leftPosition = Math.floor(Math.random() * body.clientWidth - 150);
         tectus.style.top = topPosition + "px";
         tectus.style.left = leftPosition + "px";
-        body.appendChild(tectus);
+
+        area.appendChild(tectus);
         tectusImages++;
     }, delay);
 }
 
 function userInteracted() {
+    body.removeEventListener("click", userInteracted);
+
     const whatIsThisAudio = new Audio("public/what-is-this.mp3");
     whatIsThisAudio.play();
     whatIsThisAudio.addEventListener("ended", () => {
@@ -52,8 +55,4 @@ function userInteracted() {
     });
 }
 
-body.addEventListener("click", () => {
-    if (didUserInteract === true) return;
-    didUserInteract = true;
-    userInteracted();
-});
+body.addEventListener("click", userInteracted);
