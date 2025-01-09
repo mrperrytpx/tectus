@@ -1,4 +1,4 @@
-const body = document.querySelector("#body");
+const body = document.querySelector("body");
 const area = document.querySelector(".area");
 
 let audioContext = null;
@@ -14,6 +14,7 @@ async function loadAudio(url) {
 }
 
 function getAudioSource(buffer) {
+    if (!audioBuffer) return;
     const source = audioContext.createBufferSource();
     source.buffer = buffer;
     source.connect(audioContext.destination);
@@ -49,6 +50,9 @@ function createTectus() {
                     tectusImages--;
                 }
             }
+
+            riseMountainsAudio.disconnect();
+            riseMountainsAudio.onended = null;
         };
 
         const topPosition = Math.floor(
